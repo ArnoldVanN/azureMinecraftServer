@@ -11,7 +11,7 @@ grayColour="\x1B[0;37m\033[1m"
 
 #Creating the resource group
 echo -e "${greenColour}"'Creating the resource group... '"${endColour}"
-az group create -l centralus -n MinecraftGroup
+az group create -l westeu -n MinecraftGroup
 
 sleep 3
 
