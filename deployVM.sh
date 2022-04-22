@@ -22,6 +22,13 @@ az vm create --resource-group MinecraftGroup --name MinecraftAzure --image Ubunt
 
 sleep 3
 
+echo -e "${greenColour}"'Creating the NSG rule to open the 25565... '"${endColour}"
+#Creating the NSG rule to open the 25565
+
+az network nsg rule create --resource-group MinecraftGroup --nsg-name MinecraftAzureNSG --name Port_25565 --protocol '*' --source-address-prefixes Internet --priority 1010 --source-port-ranges '*' --destination-address-prefixes '*' --destination-port-ranges 25565 --access Allow
+
+sleep 3
+
 ip=$(cat results.txt | grep "publicIpAddress" | awk '{print $2}' | tr '"' ' ' | tr "," " " | tr -d " ")
 echo -e "${greenColour}"'Connect to the VM with this command:'"${endColour}" "${turquoiseColour}"'ssh minecraftuser@'$ip''"${endColour}"
 rm -rf results.txt
