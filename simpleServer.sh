@@ -3,7 +3,6 @@ useradd minecraft
 usermod -s /bin/bash minecraft
 mkdir /home/minecraft
 chown -R minecraft:minecraft /home/minecraft
-su minecraft
 echo "installing lastest java"
 dnf install java-latest-openjdk
 sleep 1
@@ -21,5 +20,3 @@ java -jar minecraft-server-1.18.2.jar
 sleep 1
 echo "accepting eula"
 sed -i 's/eula=false/eula=true/g' eula.txt
-screen
-./start.sh
